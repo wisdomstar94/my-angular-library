@@ -8,6 +8,7 @@ const routes: Routes = [
     component: TestComponent,
     children: [
       { path: 'list', loadChildren: () => import('./list-page/list-page.module').then(m => m.ListPageModule) },
+      { path: 'table-style', loadChildren: () => import('./table-style-page/table-style-page.module').then(m => m.TableStylePageModule) },
     ]
   },
 ];

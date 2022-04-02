@@ -8,10 +8,14 @@
     <ng-template appListItem>
       <button routerLink="list">list</button>
     </ng-template>
+    <ng-template appListItem>
+      <button routerLink="table-style">table-style</button>
+    </ng-template>
   </app-list>
 </app-div>
 
 <app-div
+  [appDisplay]="'block'"
   [appMargin]="'10px'">
   <router-outlet></router-outlet>
 </app-div>
