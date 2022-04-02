@@ -27,6 +27,9 @@ export class DivComponent implements OnInit {
   // padding
   @Input() appPadding: string;
 
+  // margin
+  @Input() appMargin: string;
+
   // overflow
   @Input() appOverflow: TypeDivOverflow;
 
@@ -42,6 +45,7 @@ export class DivComponent implements OnInit {
     this.appBgColor = EnumDivDefaultValue.BG_COLOR;
 
     this.appPadding = EnumDivDefaultValue.PADDING;
+    this.appMargin = EnumDivDefaultValue.MARGIN;
 
     this.appOverflow = 'visible';
   }
@@ -90,6 +94,9 @@ export class DivComponent implements OnInit {
 
     // padding
     obj['padding'] = this.appPadding;
+
+    // margin
+    obj['margin'] = this.appMargin;
 
     // overflow
     obj['overflow'] = this.appOverflow;

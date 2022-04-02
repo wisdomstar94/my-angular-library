@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TestRoutingModule } from './test-routing.module';
-import { TestComponent } from './test.component';
+import { ListPageRoutingModule } from './list-page-routing.module';
+import { ListPageComponent } from './list-page.component';
 import { DivModule } from 'src/app/components/boxes/div/div.module';
 import { ListModule } from 'src/app/components/boxes/list/list.module';
 
 
 @NgModule({
   declarations: [
-    TestComponent
+    ListPageComponent
   ],
   imports: [
     CommonModule,
-    TestRoutingModule,
+    ListPageRoutingModule,
     DivModule,
     ListModule,
   ]
 })
-export class TestModule { }
+export class ListPageModule { }

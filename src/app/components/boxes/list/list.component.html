@@ -1,0 +1,8 @@
+<ul class="list">
+  <ng-container *ngFor="let item of items; let i = index;">
+    <li class="item"
+      [ngStyle]="getItemStyleObject(item)">
+      <ng-template [ngTemplateOutlet]="item.template"></ng-template>
+    </li>
+  </ng-container>
+</ul>

@@ -1,9 +1,17 @@
-<p>test works!</p>
 <app-div
-  style="width: 300px"
-  [appBorderColorStyle]="'gray'"
+  [appBorderColorStyle]="'blue'"
   [appBorderWeight]="'1px'"
   [appBorderRadius]="'10px'"
-  [appPadding]="'10px'">
-  hi
+  [appPadding]="'10px 10px 0 10px'"
+  [appMargin]="'10px'">
+  <app-list [appDefaultMarginRight]="'10px'" [appDefaultMarginBottom]="'10px'">
+    <ng-template appListItem>
+      <button routerLink="list">list</button>
+    </ng-template>
+  </app-list>
+</app-div>
+
+<app-div
+  [appMargin]="'10px'">
+  <router-outlet></router-outlet>
 </app-div>

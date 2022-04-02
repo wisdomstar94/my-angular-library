@@ -1,0 +1,22 @@
+<app-div>
+  <app-list
+    [appDefaultMarginBottom]="'10px'">
+    <ng-template appListItem>
+      item 1
+    </ng-template>
+    <ng-template appListItem [appMarginBottom]="'0'">
+      item 2
+    </ng-template>
+  </app-list>
+</app-div>
+<app-div>
+  <app-list
+    [appDirection]="'horizontal'">
+    <ng-template appListItem [appWidth]="'50%'">
+      item 1
+    </ng-template>
+    <ng-template appListItem [appWidth]="'50%'" [appJustifyContent]="'flex-end'">
+      item 2
+    </ng-template>
+  </app-list>
+</app-div>
