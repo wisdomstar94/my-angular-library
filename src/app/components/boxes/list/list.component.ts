@@ -10,7 +10,7 @@ import { TypeListDirection } from './types/type-list-direction';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent implements OnInit, AfterContentChecked {
-  @ContentChildren(ListItemDirective, { read: TemplateRef }) templateItems!: QueryList<TemplateRef<any>>[];
+  @ContentChildren(ListItemDirective, { read: TemplateRef }) templateItems!: QueryList<TemplateRef<any>>;
   @ContentChildren(ListItemDirective, { read: ListItemDirective }) items!: QueryList<ListItemDirective>;
 
   @Input() appDirection: TypeListDirection;
