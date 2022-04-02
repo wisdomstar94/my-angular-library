@@ -1,4 +1,4 @@
-import { AfterContentChecked, ChangeDetectionStrategy, Component, ContentChildren, ElementRef, Input, OnInit, QueryList, TemplateRef } from '@angular/core';
+import { AfterContentChecked, ChangeDetectionStrategy, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef } from '@angular/core';
 import { ListItemDirective } from './directives/list-item.directive';
 import { EnumListDefaultValue } from './enums/enum-list-default-value';
 import { TypeListDirection } from './types/type-list-direction';
@@ -24,17 +24,10 @@ export class ListComponent implements OnInit, AfterContentChecked {
   }
 
   ngAfterContentChecked(): void {
-    // console.log('..1.. this.templateItems', this.templateItems);
-    // console.log('..1.. this.items', this.items);
-
     this.items.forEach((item, index) => {
       item.template = (this.templateItems as any)._results[index];
       item.appDirection = this.appDirection;
-      // console.log('..item', item);
     });
-    // for (const item of this.items) {
-    //   item.appDirection = this.appDirection;
-    // }
   }
 
   ngOnInit(): void {
