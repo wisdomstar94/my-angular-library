@@ -8,14 +8,14 @@ import { ListItemDirective } from './directives/list-item.directive';
 @NgModule({
   declarations: [
     ListComponent,
-    ListItemDirective
+    ListItemDirective,
   ],
   imports: [
     CommonModule
   ],
   exports: [
     ListComponent,
-    ListItemDirective
+    ListItemDirective,
   ]
 })
 export class ListModule { }

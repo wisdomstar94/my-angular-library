@@ -11,9 +11,24 @@
 </app-div>
 <app-div>
   <app-list
-    [appDirection]="'horizontal'">
+    [appDefaultDirection]="'horizontal'">
     <ng-template appListItem [appWidth]="'50%'">
       item 1
+    </ng-template>
+    <ng-template appListItem [appWidth]="'50%'" [appJustifyContent]="'flex-end'">
+      item 2
+    </ng-template>
+  </app-list>
+</app-div>
+<app-div>
+  <app-list
+    [appDefaultDirection]="'horizontal'"
+    [appDefaultUlAlignItems]="'stretch'"
+    [appDefaultItemJustifyContent]="'flex-end'">
+    <ng-template appListItem [appWidth]="'35%'" [appJustifyContent]="item1JustifyContent">
+      item 1 <br />
+      ... <br />
+      ... <br />
     </ng-template>
     <ng-template appListItem [appWidth]="'50%'" [appJustifyContent]="'flex-end'">
       item 2
