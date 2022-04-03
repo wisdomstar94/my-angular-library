@@ -11,11 +11,14 @@
     <ng-template appListItem>
       <button routerLink="table-style">table-style</button>
     </ng-template>
+    <ng-template appListItem>
+      <button routerLink="swiper">swiper</button>
+    </ng-template>
   </app-list>
 </app-div>
 
 <app-div
   [appDisplay]="'block'"
-  [appMargin]="'10px'">
+  [appPadding]="'10px'">
   <router-outlet></router-outlet>
 </app-div>

@@ -1,0 +1,10 @@
+<!-- style.scss 에 반드시 @import 'swiper/scss'; 을 넣어주세요!! -->
+<swiper
+  class="swiper-box"
+  [config]="config"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange($event)">
+  <ng-template swiperSlide *ngFor="let template of templates">
+    <ng-template [ngTemplateOutlet]="template"></ng-template>
+  </ng-template>
+</swiper>
