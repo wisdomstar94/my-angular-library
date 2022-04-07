@@ -2,10 +2,23 @@
 <swiper
   #swiper
   class="swiper-box"
-  [config]="config"
+  [config]="appConfig"
   (swiper)="onSwiper($event)"
   (slideChange)="onSlideChange($event)">
   <ng-template swiperSlide *ngFor="let template of templates">
     <ng-template [ngTemplateOutlet]="template"></ng-template>
   </ng-template>
 </swiper>
+<app-div
+  *ngIf="appIsPaginationShow"
+  class="pagination-container"
+  [ngClass]="[
+    appConfig.direction
+  ]"
+  [appJustifyContent]="'center'">
+  <app-pagination-style-a
+    #paginationStyleAComponent
+    [appConfig]="appConfig"
+    [appItemsCount]="templates.length"
+    [appCurrentActiveIndex]="currentActiveIndex"></app-pagination-style-a>
+</app-div>

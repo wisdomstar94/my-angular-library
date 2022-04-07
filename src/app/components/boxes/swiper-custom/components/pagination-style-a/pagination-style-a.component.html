@@ -1,0 +1,15 @@
+<ul
+  class="list"
+  [ngClass]="[
+    appConfig?.direction === 'horizontal' ? 'horizontal' : '',
+    appConfig?.direction === 'vertical' ? 'vertical' : '',
+  ]">
+  <ng-container *ngFor="let item of [].constructor(appItemsCount); let i = index;">
+    <li class="item"
+      [ngClass]="{
+        'active': appCurrentActiveIndex === i
+      }">
+
+    </li>
+  </ng-container>
+</ul>

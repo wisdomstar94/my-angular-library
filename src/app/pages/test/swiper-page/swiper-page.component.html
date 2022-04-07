@@ -1,4 +1,10 @@
-<app-swiper-custom #swiperCustomComponent class="swiper-box">
+<app-swiper-custom
+  #swiperCustomComponent
+  class="swiper-box"
+  [appIsPaginationShow]="false"
+  [appDirection]="'vertical'"
+  [appIsAutoplay]="false"
+  [appIsLoop]="true">
   <ng-template swiperSlideCustom>
     <div class="slide-item red">
       1 <br />

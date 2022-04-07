@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, OnInit, QueryList, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef, ViewChild } from '@angular/core';
 import SwiperCore, { Swiper, SwiperOptions, Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
+import { PaginationStyleAComponent } from './components/pagination-style-a/pagination-style-a.component';
 import { SwiperSlideCustomDirective } from './directives/swiper-slide-custom.directive';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
@@ -14,13 +15,26 @@ export class SwiperCustomComponent implements OnInit {
   // style.scss 에 반드시 @import 'swiper/scss'; 을 넣어주세요!!
   @ContentChildren(SwiperSlideCustomDirective, { read: TemplateRef }) templates!: QueryList<TemplateRef<any>>;
   @ViewChild('swiper') swiper!: SwiperComponent;
-  config: SwiperOptions;
+  @ViewChild('paginationStyleAComponent') paginationStyleAComponent!: PaginationStyleAComponent;
+  appConfig: SwiperOptions;
+
+  @Input() appIsPaginationShow: boolean;
+  @Input() appDirection: 'vertical' | 'horizontal';
+  @Input() appIsAutoplay: boolean;
+  @Input() appAutoplayDelay: number;
+  @Input() appIsLoop: boolean;
+  currentActiveIndex: number;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
   ) {
-    this.config = {
-      direction: 'horizontal',
+    this.appDirection = 'horizontal';
+    this.appIsAutoplay = false;
+    this.appAutoplayDelay = 3000;
+    this.appIsLoop = false;
+
+    this.appConfig = {
+      direction: this.appDirection,
       spaceBetween: 0,
       navigation: true,
       pagination: {
@@ -29,25 +43,46 @@ export class SwiperCustomComponent implements OnInit {
       scrollbar: {
         draggable: true,
       },
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false, // 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
-      },
+      loop: this.appIsLoop,
+      autoplay: false,
+      // autoplay: {
+      //   delay: 3000,
+      //   disableOnInteraction: false, // 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
+      // },
     };
+
+    this.appIsPaginationShow = true;
+    this.currentActiveIndex = 0;
   }
 
   ngOnInit(): void {
+    this.appConfig.direction = this.appDirection;
+    this.appConfig.loop = this.appIsLoop;
+    // this.changeDetectorRef.detectChanges();
+    if (this.appIsAutoplay === true) {
+      this.appConfig.autoplay = {
+        delay: this.appAutoplayDelay,
+        disableOnInteraction: false, // 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
+      };
+    }
 
+
+    setTimeout(() => {
+      this.slidingToNext();
+    }, 3000);
+
+    setTimeout(() => {
+      this.slidingToPrev();
+    }, 6000);
   }
 
   setConfig(config: SwiperOptions): void {
-    this.config = config;
+    this.appConfig = config;
     this.changeDetectorRef.detectChanges();
   }
 
   getConfig(): SwiperOptions {
-    return this.config;
+    return this.appConfig;
   }
 
   onSwiper(swiper: Swiper): void {
@@ -58,5 +93,18 @@ export class SwiperCustomComponent implements OnInit {
     // console.log('onSlideChange.swiper', swiper);
     const realIndex = swiper.realIndex;
     console.log('onSlideChange.realIndex', realIndex);
+    this.currentActiveIndex = realIndex;
+    this.changeDetectorRef.detectChanges();
+    if (this.paginationStyleAComponent !== undefined) {
+      this.paginationStyleAComponent.detectChanges();
+    }
+  }
+
+  slidingToPrev(): void {
+    this.swiper.swiperRef.slidePrev(300, false);
+  }
+
+  slidingToNext(): void {
+    this.swiper.swiperRef.slideNext(300, false);
   }
 }
