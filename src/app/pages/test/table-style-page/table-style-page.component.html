@@ -18,20 +18,26 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          1
-        </td>
-        <td>
-          내용 1
-        </td>
-        <td>
-          내용 2
-        </td>
-        <td>
-          내용 3
-        </td>
-      </tr>
+      <ng-container *ngFor="let item of items">
+        <tr>
+          <td>
+            {{ item.no }}
+          </td>
+          <td>
+            {{ item.title }}
+          </td>
+          <td>
+            ""
+          </td>
+          <td>
+            ""
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
+</app-div>
+
+<app-div>
+  <button (click)="changeList();">리스트 내용 변경</button>
 </app-div>
