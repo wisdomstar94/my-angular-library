@@ -1,0 +1,8 @@
+<app-div>
+  <app-div>
+    <ng-content select="[show-content]"></ng-content>
+  </app-div>
+  <app-div [@heightIfAnimation]="isOpend" *ngIf="isOpend">
+    <ng-content select="[hide-content]"></ng-content>
+  </app-div>
+</app-div>

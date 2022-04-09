@@ -1,0 +1,15 @@
+<app-div [appOverflow]="'hidden'">
+  <app-accordion-box *ngFor="let item of items" (onNgOnInit)="item.accordionComponent = $event;">
+    <ng-container show-content>
+      <app-div [appBgColor]="'#eeeeee'" [appPadding]="'10px'">
+        {{ item.content }}
+        <button (click)="accordionToggleButtonClick(item);">toggle-button</button>
+      </app-div>
+    </ng-container>
+    <ng-container hide-content>
+      <app-div [appBgColor]="'#aaaaaa'" [appPadding]="'10px'">
+        {{ item.content2 }}
+      </app-div>
+    </ng-container>
+  </app-accordion-box>
+</app-div>

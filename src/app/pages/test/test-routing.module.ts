@@ -10,9 +10,9 @@ const routes: Routes = [
       { path: 'list', loadChildren: () => import('./list-page/list-page.module').then(m => m.ListPageModule) },
       { path: 'table-style', loadChildren: () => import('./table-style-page/table-style-page.module').then(m => m.TableStylePageModule) },
       { path: 'swiper', loadChildren: () => import('./swiper-page/swiper-page.module').then(m => m.SwiperPageModule) },
+      { path: 'accordion-box', loadChildren: () => import('./accordion-box-page/accordion-box-page.module').then(m => m.AccordionBoxPageModule) },
     ]
   },
-
 ];
 
 @NgModule({
