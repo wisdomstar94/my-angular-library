@@ -12,6 +12,8 @@ const routes: Routes = [
       { path: 'swiper', loadChildren: () => import('./swiper-page/swiper-page.module').then(m => m.SwiperPageModule) },
       { path: 'accordion-box', loadChildren: () => import('./accordion-box-page/accordion-box-page.module').then(m => m.AccordionBoxPageModule) },
       { path: 'div', loadChildren: () => import('./div-page/div-page.module').then(m => m.DivPageModule) },
+      { path: 'empty-row', loadChildren: () => import('./empty-row-page/empty-row-page.module').then(m => m.EmptyRowPageModule) },
+      { path: 'empty-column', loadChildren: () => import('./empty-column-page/empty-column-page.module').then(m => m.EmptyColumnPageModule) },
     ]
   },
 ];
