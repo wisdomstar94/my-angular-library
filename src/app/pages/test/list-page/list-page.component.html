@@ -1,17 +1,22 @@
-<app-div>
+<app-div
+  [appMargin]="'0 0 10px 0'">
   <app-list
-    [appDefaultMarginBottom]="'10px'">
-    <ng-template appListItem>
+    [appDefaultMarginBottom]="'10px'"
+    [appDefaultItemBgColor]="'#f00'"
+    [appDefaultItemJustifyContent]="'flex-end'">
+    <ng-template appListItem [appMarginBottom]="'0'">
       item 1
     </ng-template>
-    <ng-template appListItem [appMarginBottom]="'0'">
+    <ng-template appListItem [appMarginBottom]="'0'" [appJustifyContent]="'flex-end'">
       item 2
     </ng-template>
   </app-list>
 </app-div>
-<app-div>
+<app-div
+  [appMargin]="'0 0 10px 0'">
   <app-list
-    [appDefaultDirection]="'horizontal'">
+    [appDefaultDirection]="'horizontal'"
+    [appDefaultItemBgColor]="'#f00'">
     <ng-template appListItem [appWidth]="'50%'">
       item 1
     </ng-template>
@@ -20,17 +25,19 @@
     </ng-template>
   </app-list>
 </app-div>
-<app-div>
+<app-div
+  [appMargin]="'0 0 10px 0'">
   <app-list
     [appDefaultDirection]="'horizontal'"
     [appDefaultUlAlignItems]="'stretch'"
-    [appDefaultItemJustifyContent]="'flex-end'">
-    <ng-template appListItem [appWidth]="'35%'" [appJustifyContent]="item1JustifyContent">
+    [appDefaultItemJustifyContent]="'flex-end'"
+    [appDefaultItemAlignItems]="'flex-end'">
+    <ng-template appListItem [appWidth]="'35%'" [appJustifyContent]="item1JustifyContent" [appMarginRight]="'10px'">
       item 1 <br />
       ... <br />
       ... <br />
     </ng-template>
-    <ng-template appListItem [appWidth]="'50%'" [appJustifyContent]="'flex-end'">
+    <ng-template appListItem [appWidth]="'50%'" [appJustifyContent]="'flex-end'" [appAlignItems]="'flex-start'">
       item 2
     </ng-template>
   </app-list>

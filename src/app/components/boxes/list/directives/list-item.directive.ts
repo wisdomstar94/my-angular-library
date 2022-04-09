@@ -12,6 +12,7 @@ export class ListItemDirective implements OnInit {
   @Input() appJustifyContent?: TypeListItemFlexPosition;
   @Input() appMarginRight?: string;
   @Input() appMarginBottom?: string;
+  @Input() appBgColor?: string;
   @Input() template?: any;
 
   constructor() {

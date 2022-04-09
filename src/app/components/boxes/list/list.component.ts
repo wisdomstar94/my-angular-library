@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef } from '@angular/core';
 import { ListItemDirective } from './directives/list-item.directive';
 import { EnumListDefaultValue } from './enums/enum-list-default-value';
 import { TypeListDirection } from './types/type-list-direction';
@@ -8,9 +8,9 @@ import { TypeListItemFlexPosition } from './types/type-list-item-flex-position';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListComponent implements OnInit, AfterContentChecked {
+export class ListComponent implements OnInit, AfterContentInit {
   @ContentChildren(ListItemDirective, { read: TemplateRef }) templateItems!: QueryList<TemplateRef<any>>;
   @ContentChildren(ListItemDirective, { read: ListItemDirective }) items!: QueryList<ListItemDirective>;
 
@@ -19,6 +19,7 @@ export class ListComponent implements OnInit, AfterContentChecked {
   @Input() appDefaultMarginBottom: string;
   @Input() appDefaultItemJustifyContent?: TypeListItemFlexPosition;
   @Input() appDefaultItemAlignItems?: TypeListItemFlexPosition;
+  @Input() appDefaultItemBgColor?: string;
   @Input() appDefaultUlJustifyContent?: TypeListItemFlexPosition;
   @Input() appDefaultUlAlignItems?: TypeListItemFlexPosition;
 
@@ -28,7 +29,7 @@ export class ListComponent implements OnInit, AfterContentChecked {
     this.appDefaultMarginBottom = EnumListDefaultValue.ITEM_MARGIN_BOTTOM;
   }
 
-  ngAfterContentChecked(): void {
+  ngAfterContentInit(): void {
     this.items.forEach((item, index) => {
       item.template = (this.templateItems as any)._results[index];
       item.appDirection = this.appDefaultDirection;
@@ -95,6 +96,13 @@ export class ListComponent implements OnInit, AfterContentChecked {
     obj['margin-bottom'] = this.appDefaultMarginBottom;
     if (typeof item.appMarginBottom === 'string') {
       obj['margin-bottom'] = item.appMarginBottom;
+    }
+
+    // background-color
+    if (typeof this.appDefaultItemBgColor === 'string') {
+      obj['background-color'] = this.appDefaultItemBgColor;
+    } else if (typeof item.appBgColor === 'string') {
+      obj['background-color'] = item.appBgColor;
     }
 
     return obj;
