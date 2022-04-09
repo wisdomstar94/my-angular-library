@@ -6,6 +6,12 @@ export interface FileNameAndTypeInfo {
 }
 
 export type ItemIndexPosition = 'first-index' | 'last-index' | 'between';
+// export type ElementPositionTarget = 'window' | 'parent';
+
+// export interface ElementPositionInfo {
+//   x: number;
+//   y: number;
+// }
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +40,21 @@ export class CommonService {
     observer.observe(target, option);
     return observer; // 추후 observer.disconnect() 로 구독 해제 해주어야 합니다.
   }
+
+  // getElementPositionInfo(target: ElementPositionTarget): ElementPositionInfo {
+  //   const result: ElementPositionInfo = {
+  //     x: 0,
+  //     y: 0,
+  //   };
+
+  //   if (target === 'window') {
+
+  //   } else {
+
+  //   }
+
+  //   return result;
+  // }
 
   getFileNameAndTypeInfo(fileName: string): FileNameAndTypeInfo {
     const returnResult: FileNameAndTypeInfo = {

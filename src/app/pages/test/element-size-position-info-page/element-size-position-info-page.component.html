@@ -1,0 +1,22 @@
+<app-div
+  [appJustifyContent]="'center'">
+  <app-div
+    style="width: 600px;"
+    [appBorderWeight]="'1px'"
+    [appBorderColor]="'#aaaaaa'"
+    [appPadding]="'20px'">
+    <app-div
+      *ngFor="let item of items"
+      appElementSizePositionInfo
+      (onNgOnInit)="item.elementSizePositionInfoDirective = $event"
+      class="item"
+      [appBgColor]="item.appBgColor"
+      [appHeight]="'100px'">
+      {{ item.text }}
+    </app-div>
+  </app-div>
+</app-div>
+
+<app-div>
+  <button (click)="checkItems();">items 확인</button>
+</app-div>
