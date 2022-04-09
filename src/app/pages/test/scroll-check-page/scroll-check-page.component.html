@@ -1,0 +1,80 @@
+<app-div appScrollCheck (onScrolled)="miniBoxScrolled($event);" [appIsChildApply]="true" [appScrollCheckTarget]="'self'" [appHeight]="'200px'" [appOverflowY]="'scroll'">
+  <app-list>
+    <ng-template appListItem>
+      <app-div [appHeight]="'60px'" [appBgColor]="'#ff0000'">
+        001
+      </app-div>
+    </ng-template>
+    <ng-template appListItem>
+      <app-div [appHeight]="'60px'" [appBgColor]="'#ffeeee'">
+        002
+      </app-div>
+    </ng-template>
+    <ng-template appListItem>
+      <app-div [appHeight]="'60px'" [appBgColor]="'#ffdddd'">
+        003
+      </app-div>
+    </ng-template>
+    <ng-template appListItem>
+      <app-div [appHeight]="'60px'" [appBgColor]="'#ffcccc'">
+        004
+      </app-div>
+    </ng-template>
+    <ng-template appListItem>
+      <app-div [appHeight]="'60px'" [appBgColor]="'#ffbbbb'">
+        005
+      </app-div>
+    </ng-template>
+    <ng-template appListItem>
+      <app-div [appHeight]="'60px'" [appBgColor]="'#ff7777'">
+        006
+      </app-div>
+    </ng-template>
+    <ng-template appListItem>
+      <app-div [appHeight]="'60px'" [appBgColor]="'#ff5555'">
+        007
+      </app-div>
+    </ng-template>
+  </app-list>
+</app-div>
+
+<div appScrollCheck (onScrolled)="windowScrolled($event);"></div>
+
+<app-list
+  [appDefaultDirection]="'vertical'">
+  <ng-template appListItem>
+    <app-div [appHeight]="'200px'" [appBgColor]="'#eeeeee'">
+      1
+    </app-div>
+  </ng-template>
+  <ng-template appListItem>
+    <app-div [appHeight]="'200px'" [appBgColor]="'#dddddd'">
+      2
+    </app-div>
+  </ng-template>
+  <ng-template appListItem>
+    <app-div [appHeight]="'200px'" [appBgColor]="'#cccccc'">
+      3
+    </app-div>
+  </ng-template>
+  <ng-template appListItem>
+    <app-div [appHeight]="'200px'" [appBgColor]="'#bbbbbb'">
+      4
+    </app-div>
+  </ng-template>
+  <ng-template appListItem>
+    <app-div [appHeight]="'200px'" [appBgColor]="'#aaaaaa'">
+      5
+    </app-div>
+  </ng-template>
+  <ng-template appListItem>
+    <app-div [appHeight]="'200px'" [appBgColor]="'#999999'">
+      6
+    </app-div>
+  </ng-template>
+  <ng-template appListItem>
+    <app-div [appHeight]="'200px'" [appBgColor]="'#888888'">
+      7
+    </app-div>
+  </ng-template>
+</app-list>

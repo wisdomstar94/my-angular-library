@@ -1,4 +1,4 @@
-<app-div [appOverflow]="'hidden'">
+<app-div [appOverflowY]="'hidden'">
   <app-accordion-box *ngFor="let item of items" (onNgOnInit)="item.accordionComponent = $event;">
     <ng-container show-content>
       <app-div [appBgColor]="'#eeeeee'" [appPadding]="'10px'">

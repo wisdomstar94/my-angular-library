@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: 'div', loadChildren: () => import('./div-page/div-page.module').then(m => m.DivPageModule) },
       { path: 'empty-row', loadChildren: () => import('./empty-row-page/empty-row-page.module').then(m => m.EmptyRowPageModule) },
       { path: 'empty-column', loadChildren: () => import('./empty-column-page/empty-column-page.module').then(m => m.EmptyColumnPageModule) },
+      { path: 'scroll-check', loadChildren: () => import('./scroll-check-page/scroll-check-page.module').then(m => m.ScrollCheckPageModule) },
     ]
   },
 ];

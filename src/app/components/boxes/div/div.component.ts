@@ -38,7 +38,8 @@ export class DivComponent implements OnInit {
   @Input() appMargin: string;
 
   // overflow
-  @Input() appOverflow: TypeDivOverflow;
+  @Input() appOverflowX?: TypeDivOverflow;
+  @Input() appOverflowY?: TypeDivOverflow;
 
   // display
   @Input() appDisplay?: TypeDivDisplay;
@@ -48,6 +49,9 @@ export class DivComponent implements OnInit {
 
   // align items
   @Input() appAlignItems?: TypeDivFlexPosition;
+
+  // height
+  @Input() appHeight?: string;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
@@ -64,8 +68,6 @@ export class DivComponent implements OnInit {
 
     this.appPadding = EnumDivDefaultValue.PADDING;
     this.appMargin = EnumDivDefaultValue.MARGIN;
-
-    this.appOverflow = 'visible';
   }
 
   ngOnInit(): void {
@@ -142,7 +144,13 @@ export class DivComponent implements OnInit {
     obj['margin'] = this.appMargin;
 
     // overflow
-    obj['overflow'] = this.appOverflow;
+    if (typeof this.appOverflowX === 'string') {
+      obj['overflow-x'] = this.appOverflowX;
+    }
+
+    if (typeof this.appOverflowY === 'string') {
+      obj['overflow-y'] = this.appOverflowY;
+    }
 
     // display
     if (typeof this.appDisplay !== 'string') {
@@ -163,6 +171,11 @@ export class DivComponent implements OnInit {
       obj['align-items'] = 'flex-start';
     } else {
       obj['align-items'] = this.appAlignItems;
+    }
+
+    // height
+    if (typeof this.appHeight === 'string') {
+      obj['height'] = this.appHeight;
     }
 
     return obj;

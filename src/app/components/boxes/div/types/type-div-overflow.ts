@@ -1,1 +1,1 @@
-export type TypeDivOverflow = 'visible' | 'auto' | 'hidden';
+export type TypeDivOverflow = 'visible' | 'auto' | 'hidden' | 'scroll';
