@@ -11,6 +11,7 @@ const routes: Routes = [
       { path: 'table-style', loadChildren: () => import('./table-style-page/table-style-page.module').then(m => m.TableStylePageModule) },
       { path: 'swiper', loadChildren: () => import('./swiper-page/swiper-page.module').then(m => m.SwiperPageModule) },
       { path: 'accordion-box', loadChildren: () => import('./accordion-box-page/accordion-box-page.module').then(m => m.AccordionBoxPageModule) },
+      { path: 'div', loadChildren: () => import('./div-page/div-page.module').then(m => m.DivPageModule) },
     ]
   },
 ];

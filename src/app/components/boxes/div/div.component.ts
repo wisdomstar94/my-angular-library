@@ -6,6 +6,7 @@ import { TypeDivBgColorStyle } from './types/type-div-bg-color-style';
 import { TypeDivOverflow } from './types/type-div-overflow';
 import { TypeDivDisplay } from './types/type-div-display';
 import { TypeDivFlexPosition } from './types/type-div-flex-position';
+import { TypeDivBgRepeat } from './types/type-div-bg-repeat';
 
 @Component({
   selector: 'app-div',
@@ -25,6 +26,10 @@ export class DivComponent implements OnInit {
   // background options
   @Input() appBgColorStyle: TypeDivBgColorStyle;
   @Input() appBgColor: string;
+  @Input() appBgImageUrl?: string;
+  @Input() appBgRepeat?: TypeDivBgRepeat;
+  @Input() appBgSize?: string;
+  @Input() appBgPosition?: string;
 
   // padding
   @Input() appPadding: string;
@@ -108,6 +113,26 @@ export class DivComponent implements OnInit {
       obj['background-color'] = this.getBackgroundColorFromColorStyle();
     } else {
       obj['background-color'] = this.appBgColor;
+    }
+
+    if (typeof this.appBgImageUrl === 'string') {
+      obj['background-image'] = `url('${this.appBgImageUrl}')`;
+    }
+
+    if (typeof this.appBgRepeat === 'string') {
+      obj['background-repeat'] = this.appBgRepeat;
+    } else {
+      obj['background-repeat'] = 'no-repeat';
+    }
+
+    if (typeof this.appBgSize === 'string') {
+      obj['background-size'] = this.appBgSize;
+    }
+
+    if (typeof this.appBgPosition === 'string') {
+      obj['background-position'] = this.appBgPosition;
+    } else {
+      obj['background-position'] = 'center center';
     }
 
     // padding
