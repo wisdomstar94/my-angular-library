@@ -15,8 +15,8 @@ export class ListComponent implements OnInit, AfterContentInit {
   @ContentChildren(ListItemDirective, { read: ListItemDirective }) items!: QueryList<ListItemDirective>;
 
   @Input() appDefaultDirection: TypeListDirection;
-  @Input() appDefaultMarginRight: string;
-  @Input() appDefaultMarginBottom: string;
+  @Input() appDefaultItemMarginRight: string;
+  @Input() appDefaultItemMarginBottom: string;
   @Input() appDefaultItemJustifyContent?: TypeListItemFlexPosition;
   @Input() appDefaultItemAlignItems?: TypeListItemFlexPosition;
   @Input() appDefaultItemBgColor?: string;
@@ -25,8 +25,8 @@ export class ListComponent implements OnInit, AfterContentInit {
 
   constructor() {
     this.appDefaultDirection = 'vertical';
-    this.appDefaultMarginRight = EnumListDefaultValue.ITEM_MARGIN_RIGHT;
-    this.appDefaultMarginBottom = EnumListDefaultValue.ITEM_MARGIN_BOTTOM;
+    this.appDefaultItemMarginRight = EnumListDefaultValue.ITEM_MARGIN_RIGHT;
+    this.appDefaultItemMarginBottom = EnumListDefaultValue.ITEM_MARGIN_BOTTOM;
   }
 
   ngAfterContentInit(): void {
@@ -87,13 +87,13 @@ export class ListComponent implements OnInit, AfterContentInit {
     }
 
     // margin-right
-    obj['margin-right'] = this.appDefaultMarginRight;
+    obj['margin-right'] = this.appDefaultItemMarginRight;
     if (typeof item.appMarginRight === 'string') {
       obj['margin-right'] = item.appMarginRight;
     }
 
     // margin-bottom
-    obj['margin-bottom'] = this.appDefaultMarginBottom;
+    obj['margin-bottom'] = this.appDefaultItemMarginBottom;
     if (typeof item.appMarginBottom === 'string') {
       obj['margin-bottom'] = item.appMarginBottom;
     }

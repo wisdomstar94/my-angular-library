@@ -1,0 +1,18 @@
+<app-list
+  [appDefaultDirection]="'vertical'"
+  [appDefaultItemMarginBottom]="'10px'">
+  <ng-template appListItem>
+    <app-div>
+      <app-ckeditor-custom
+        style="width: 100%;"
+        [appTextAreaMinHeight]="'200px'"
+        #ckeditorCustomComponent></app-ckeditor-custom>
+    </app-div>
+  </ng-template>
+  <ng-template appListItem>
+    <app-div>
+      <button (click)="changeEditorData();">에디터 내용 변경</button>
+      <button (click)="checkEditorData();">에디터 내용 체크</button>
+    </app-div>
+  </ng-template>
+</app-list>

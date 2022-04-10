@@ -4,7 +4,7 @@
   [appBorderRadius]="'10px'"
   [appPadding]="'10px 10px 0 10px'"
   [appMargin]="'10px'">
-  <app-list [appDefaultDirection]="'horizontal'" [appDefaultMarginRight]="'10px'" [appDefaultMarginBottom]="'10px'">
+  <app-list [appDefaultDirection]="'horizontal'" [appDefaultItemMarginRight]="'10px'" [appDefaultItemMarginBottom]="'10px'">
     <ng-template appListItem>
       <button routerLink="list">list</button>
     </ng-template>
@@ -31,6 +31,9 @@
     </ng-template>
     <ng-template appListItem>
       <button routerLink="element-size-position-info">element-size-position-info</button>
+    </ng-template>
+    <ng-template appListItem>
+      <button routerLink="ckeditor-custom">ckeditor-custom</button>
     </ng-template>
   </app-list>
 </app-div>

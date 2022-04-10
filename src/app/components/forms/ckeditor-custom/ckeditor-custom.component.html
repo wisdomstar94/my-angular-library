@@ -1,0 +1,7 @@
+<ckeditor
+  appCkeditorTextareaCustom
+  [appTextAreaMinHeight]="appTextAreaMinHeight"
+  class="ckeditor"
+  [(ngModel)]="model.editorData"
+  [editor]="Editor!"
+  (ready)="onReady($event)"></ckeditor>

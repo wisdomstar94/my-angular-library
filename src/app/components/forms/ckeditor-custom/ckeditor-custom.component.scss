@@ -1,0 +1,16 @@
+:host-context {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+}
+
+.ckeditor {
+  width: 100%;
+  display: block;
+  position: relative;
+  // border: 1px solid #ccc;
+  // border-top: 0;
+  box-sizing: border-box;
+}
