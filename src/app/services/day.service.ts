@@ -11,6 +11,11 @@ interface DatetimeInfo {
   second: number;
 }
 
+interface WeekStartAndEndInfo {
+  startDate: string;
+  endDate: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -720,7 +725,8 @@ class CustomDateClass {
     //   'd', 'dd', 'D', 'DD', // 일
     //   'h', 'hh', 'H', 'HH', // 시
     //   'm', 'mm', 'i', 'ii', // 분
-    //   's', 'ss' // 초
+    //   's', 'ss', // 초
+    //   'L', 'l', // 마지막일
     // ];
 
     let return_format = format_string;
@@ -757,6 +763,10 @@ class CustomDateClass {
     // 초 치환
     return_format = return_format.replace(/ss/g, t.zeroFill(dateInfo.second));
     return_format = return_format.replace(/s/g, dateInfo.second + '');
+
+    // 마지막일 치환
+    return_format = return_format.replace(/LL/g, t.zeroFill(this.getLastDate()));
+    return_format = return_format.replace(/l/g, this.getLastDate() + '');
 
     return return_format;
   }
@@ -810,6 +820,29 @@ class CustomDateClass {
     }
 
     return dately;
+  }
+
+  getWeekStartAndEndInfo(): WeekStartAndEndInfo {
+    const info: WeekStartAndEndInfo = {
+      startDate: '',
+      endDate: '',
+    };
+
+    const dateInfo = { ...this.getDateInfo() };
+    const dateObject = dateInfo.dateObject;
+    for (let i = 0; i < 7; i++) {
+      if (dateObject.getDay() === 1) {
+        const startDate = new CustomDateClass(dateObject);
+        const endDate = new CustomDateClass(new Date(dateObject)).add(6, 'date');
+        info.startDate = startDate.format('YYYY-MM-DD');
+        info.endDate = endDate.format('YYYY-MM-DD');
+        break;
+      }
+
+      dateObject.setDate(dateObject.getDate() - 1);
+    }
+
+    return info;
   }
 
   getISOString(): string {
