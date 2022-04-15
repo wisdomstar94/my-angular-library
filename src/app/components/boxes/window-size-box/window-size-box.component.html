@@ -1,9 +1,7 @@
 <div
+  #boxElement
   class="box"
   (window:resize)="resized($event);"
-  [ngStyle]="{
-    'width': width + 'px',
-    'height': height + 'px'
-  }">
+  [ngStyle]="getStyle()">
   <ng-content></ng-content>
 </div>

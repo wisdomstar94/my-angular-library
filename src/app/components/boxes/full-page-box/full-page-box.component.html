@@ -1,0 +1,13 @@
+<app-swiper-custom
+  #swiperCustomComponent
+  appWheelCheck
+  (onWheelInfo)="wheelInfo($event);"
+  appExpandSizeToParent
+  [appDirection]="'vertical'"
+  [appIsAutoplay]="false"
+  [appIsPaginationShow]="false"
+  [appSpeed]="appScrollSpeed">
+  <ng-template swiperSlideCustom *ngFor="let item of items">
+    <ng-template [ngTemplateOutlet]="item"></ng-template>
+  </ng-template>
+</app-swiper-custom>

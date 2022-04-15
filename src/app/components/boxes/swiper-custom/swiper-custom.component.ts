@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, OnInit, QueryList, TemplateRef, ViewChild } from '@angular/core';
+import { delay, of, take } from 'rxjs';
 import SwiperCore, { Swiper, SwiperOptions, Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
 import { PaginationStyleAComponent } from './components/pagination-style-a/pagination-style-a.component';
@@ -23,6 +24,7 @@ export class SwiperCustomComponent implements OnInit {
   @Input() appIsAutoplay: boolean;
   @Input() appAutoplayDelay: number;
   @Input() appIsLoop: boolean;
+  @Input() appSpeed: number;
   currentActiveIndex: number;
 
   constructor(
@@ -32,6 +34,7 @@ export class SwiperCustomComponent implements OnInit {
     this.appIsAutoplay = false;
     this.appAutoplayDelay = 3000;
     this.appIsLoop = false;
+    this.appSpeed = 300;
 
     this.appConfig = {
       direction: this.appDirection,
@@ -45,6 +48,7 @@ export class SwiperCustomComponent implements OnInit {
       },
       loop: this.appIsLoop,
       autoplay: false,
+      speed: this.appSpeed,
       // autoplay: {
       //   delay: 3000,
       //   disableOnInteraction: false, // 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
@@ -64,16 +68,18 @@ export class SwiperCustomComponent implements OnInit {
         delay: this.appAutoplayDelay,
         disableOnInteraction: false, // 쓸어 넘기거나 버튼 클릭 시 자동 슬라이드 정지.
       };
+    } else {
+      this.appConfig.autoplay = false;
     }
 
 
-    setTimeout(() => {
-      this.slidingToNext();
-    }, 3000);
+    // setTimeout(() => {
+    //   this.slidingToNext();
+    // }, 3000);
 
-    setTimeout(() => {
-      this.slidingToPrev();
-    }, 6000);
+    // setTimeout(() => {
+    //   this.slidingToPrev();
+    // }, 6000);
   }
 
   setConfig(config: SwiperOptions): void {
@@ -100,11 +106,27 @@ export class SwiperCustomComponent implements OnInit {
     }
   }
 
-  slidingToPrev(): void {
-    this.swiper.swiperRef.slidePrev(300, false);
+  slidingToPrev(speedCallback?: () => void): void {
+    this.swiper.swiperRef.slidePrev(this.appSpeed, false);
+    of([]).pipe(
+      delay(this.appSpeed),
+      take(1),
+    ).subscribe(data => {
+      if (speedCallback !== undefined) {
+        speedCallback();
+      }
+    });
   }
 
-  slidingToNext(): void {
-    this.swiper.swiperRef.slideNext(300, false);
+  slidingToNext(speedCallback?: () => void): void {
+    this.swiper.swiperRef.slideNext(this.appSpeed, false);
+    of([]).pipe(
+      delay(this.appSpeed),
+      take(1),
+    ).subscribe(data => {
+      if (speedCallback !== undefined) {
+        speedCallback();
+      }
+    });
   }
 }

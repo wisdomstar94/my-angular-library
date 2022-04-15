@@ -21,6 +21,7 @@ const routes: Routes = [
     ]
   },
   { path: 'infinity-scroll', loadChildren: () => import('./infinity-scroll-page/infinity-scroll-page.module').then(m => m.InfinityScrollPageModule) },
+  { path: 'full-page', loadChildren: () => import('./full-page-box-page/full-page-box-page.module').then(m => m.FullPageBoxPageModule) },
 ];
 
 @NgModule({
