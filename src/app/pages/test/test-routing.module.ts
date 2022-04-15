@@ -17,8 +17,10 @@ const routes: Routes = [
       { path: 'scroll-check', loadChildren: () => import('./scroll-check-page/scroll-check-page.module').then(m => m.ScrollCheckPageModule) },
       { path: 'element-size-position-info', loadChildren: () => import('./element-size-position-info-page/element-size-position-info-page.module').then(m => m.ElementSizePositionInfoPageModule) },
       { path: 'ckeditor-custom', loadChildren: () => import('./ckeditor-custom-page/ckeditor-custom-page.module').then(m => m.CkeditorCustomPageModule) },
+      // { path: 'infinity-scroll', loadChildren: () => import('./infinity-scroll-page/infinity-scroll-page.module').then(m => m.InfinityScrollPageModule) },
     ]
   },
+  { path: 'infinity-scroll', loadChildren: () => import('./infinity-scroll-page/infinity-scroll-page.module').then(m => m.InfinityScrollPageModule) },
 ];
 
 @NgModule({

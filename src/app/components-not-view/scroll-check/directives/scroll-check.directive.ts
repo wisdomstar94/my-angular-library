@@ -37,9 +37,21 @@ export class ScrollCheckDirective implements OnInit {
         scrollTop = (event.target as any).scrollTop;
       }
 
+      const scrollHeight = (event.target as any).scrollHeight;
+      const clientHeight = (event.target as any).clientHeight;
+      // console.log('clientHeight', clientHeight);
+
+      let isLastScrollArea = false;
+      if ((scrollHeight - clientHeight - 40) < scrollTop) {
+        isLastScrollArea = true;
+      }
+
       // console.log('scrollTop', scrollTop);
       this.onScrolled.emit({
         scrollTop: scrollTop,
+        scrollHeight: scrollHeight,
+        clientHeight: clientHeight,
+        isLastScrollArea: isLastScrollArea,
       });
     });
   }
