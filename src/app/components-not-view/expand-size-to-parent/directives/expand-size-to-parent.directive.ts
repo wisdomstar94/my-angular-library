@@ -19,7 +19,7 @@ export class ExpandSizeToParentDirective implements AfterViewInit {
   }
 
   checkSize(): void {
-    console.log('this.elementRef', this.elementRef);
+    // console.log('this.elementRef', this.elementRef);
 
     const element = this.elementRef?.nativeElement;
 
@@ -27,8 +27,8 @@ export class ExpandSizeToParentDirective implements AfterViewInit {
     const parentElementWidth = parentElement.clientWidth;
     const parentElementHeight = parentElement.clientHeight;
 
-    console.log('parentElementWidth', parentElementWidth);
-    console.log('parentElementHeight', parentElementHeight);
+    // console.log('parentElementWidth', parentElementWidth);
+    // console.log('parentElementHeight', parentElementHeight);
 
     this.renderer?.setStyle(element, 'width', parentElementWidth + 'px');
     this.renderer?.setStyle(element, 'height', parentElementHeight + 'px');
